@@ -64,7 +64,7 @@ EXPOSE 3838
 
 # create an audiolabeler dedicated space for shiny-server
 RUN mkdir /srv/shiny-server/sample-apps/audio
-COPY audio_labeler-master/* /srv/shiny-server/sample-apps/audio/.
+COPY audio_labeler-master/ /srv/shiny-server/sample-apps/audio/.
 
 # clean audio files folder
 RUN  rm /opt/shiny-server/samples/sample-apps/audio/www/tmp/*
