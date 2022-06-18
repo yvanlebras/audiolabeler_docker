@@ -62,9 +62,12 @@ RUN R -e 'remotes::install_local("audio_labeler-master.tar.zip", upgrade="never"
 
 EXPOSE 3838
 
+# create an audiolabeler dedicated space for shiny-server
 RUN mkdir /srv/shiny-server/sample-apps/audio
 COPY audio_labeler-master/* /srv/shiny-server/sample-apps/audio/.
 
+# clean audio files folder
+RUN  rm /opt/shiny-server/samples/sample-apps/audio/www/tmp/* &&
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 RUN chmod 777 /usr/bin/shiny-server.sh
 CMD ["/usr/bin/shiny-server.sh"]
