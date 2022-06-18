@@ -65,4 +65,6 @@ EXPOSE 3838
 RUN mkdir /srv/shiny-server/sample-apps/audio
 COPY audio_labeler-master/* /srv/shiny-server/sample-apps/audio/.
 
-#CMD R -e "options('shiny.port'=3838,shiny.host='0.0.0.0');library(ShinyBIOMOD);ShinyBIOMOD::run_shinyBIOMOD()"
+COPY shiny-server.sh /usr/bin/shiny-server.sh
+RUN chmod 777 /usr/bin/shiny-server.sh
+CMD ["/usr/bin/shiny-server.sh"]
